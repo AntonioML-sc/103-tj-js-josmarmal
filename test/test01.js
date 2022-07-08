@@ -1,4 +1,4 @@
-function tiers(num) {
+function tiers2(num) {
 	let st = "";
 
 	for (let i = 1; i <= num; i++) {
@@ -13,4 +13,14 @@ function tiers(num) {
 
 	return st;
 }
+
+function tiers(num) {
+	// mindbreaking functional version
+	if (!/^\d+$/.test(num)) return "";
+	return (
+        [...Array(num).keys()]
+        .reduce((total, value) => total + [...Array(num)].fill(value).map((v, i) => (v < num - i - 1)? " ": "*").join("") + "\n" , "")
+    )
+}
+
 module.exports = tiers;
